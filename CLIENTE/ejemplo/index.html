@@ -1,0 +1,31 @@
+<html>
+
+<head>
+
+    <title>Ejemplo de script en cuerpo de pagina </title>
+    <script src='Scripts/jquery.min.js'></script>
+    <script>
+
+        function mensaje() {//defines el metodo
+            document.write("<h1 align='center'> HOLA MUNDO </h1>");
+            console.log('HOLA MUNDO 2')// se ve en la consola de la pagina (F12)
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <p id="parrafo"></p>
+    <script>
+
+        mensaje(); //llamas al metodo 
+        document.getElementById("parrafo").innerHTML = 5 + 6;
+        
+
+    </script>
+
+</body>
+
+
+</html>
