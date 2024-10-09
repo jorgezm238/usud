@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+
+<html lang="es">
+
+<head>
+
+    <title>Node js</title>
+    <link rel="stylesheet" type="text/css" href="..\css\estilo.css" />
+    <link rel="stylesheet" type="text/css" href="..\css\layout.css" />
+    <link rel="icon" href="..\imagenes_video/node.ico" type="image/png">
+
+</head>
+
+<body>
+    <header>
+        <img src="..\imagenes_video\logoNode.png" alt="Imagen del logo de Node js" />
+        <h1>Node js</h1>
+        <nav>
+            <a href="..\index.html">Inicio</a>
+            <a href="ventajasYDesventajas.html">Ventajas y Desventajas</a>
+            <a href="versiones.html">Versiones</a>
+            <a href="#">Contacto</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Formulario de asistencia</h2>
+            <P>Rellene el siguiente formulario para poder contactar con el creador o envie un correo a <a
+                    href="wrn47806@educastur.es">wrn47806@educastur.es</a>.</P>
+        </section>
+        <form name="datos">
+            <p><label for="email">Email:</label> <input id="email" type="email" /> </p>
+            <p><label for="nombre">Nombre:</label> <input id="nombre" type="text" /> </p>
+            <p><label for="apellido">Apellido:</label> <input id="apellido" type="text" /> </p>
+            <p><label for="nacimiento">Fecha de nacimiento:</label> <input id="nacimiento" type="date" /> </p>
+            <p><label for="edad">Edad:</label> <input id="edad" type="number" /> </p>
+            <p><label for="phone">Phone:</label> <input id="phone" type="tel" /> </p>
+            <fieldset>
+                <legend>Selecciona una opción</legend>
+                <label for="opinion" title="dar una opinion"> <input type="radio" id="opinion" name="radio"
+                        value="opinion" checked>Opinión</label>
+                <label for="duda" title="preguntar una duda"> <input type="radio" id="duda" name="radio"
+                        value="duda">Duda</label>
+                <label for="recomendacion" title="dar una recomendacion"> <input type="radio" id="recomendacion"
+                        name="radio" value="recomendacion">Recomendación</label>
+                <label for="error" title="informar de un error"> <input type="radio" id="error" name="radio"
+                        value="error">Error</label>
+            </fieldset>
+            <p><label for="comentario" title="comentario">Escriba aquí su comentario <textarea maxlength="300"
+                        id="comentario"></textarea></label>
+            <p><label for="puntuacion">Puntue el sitio</label> <input id="puntuacion" value="0" type="range" /> </p>
+            <input type="submit" value="Enviar" />
+        </form>
+    </main>
+    <footer>
+        <p>Autor: Jorge Zardaín Monforte</p>
+        <p>Correo de contacto: <a href="wrn47806@educastur.es">wrn47806@educastur.es</a></p>
+    </footer>
+</body>
+
+</html>

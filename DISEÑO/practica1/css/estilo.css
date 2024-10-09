@@ -1,0 +1,218 @@
+
+/*Especificidad: 001*/
+body {
+  font-family: 'Times New Roman', Times, serif;
+  color: #ffffff;
+  background-color: #4F4F4F;
+  
+  }
+/*Especificidad: 001*/
+main{
+  margin-left: 10em;
+  margin-right: 8em;
+}
+/*Especificidad: 001*/
+header {
+  background-color:#000000 ;
+  color: white;
+  margin-bottom: 1em;
+}
+
+/*Especificidad: 002*/
+header h1{
+  font-family: 'Times New Roman', Times, serif;
+  color: #E8F6A4;
+  background-color: black;
+  font-size: 3em;
+  
+}
+/*Especificidad: 001*/
+nav {
+  color: white;
+  background-color: #000000;
+
+  padding: 0.5em 0.5em;
+
+}
+
+/*Especificidad: 002*/
+nav a {
+  font-family: 'Times New Roman', Times, serif;
+  color: #E8F6A4;
+  background-color: black;
+  text-align: center;
+  justify-content: space-around; 
+  font-size: 1.5em;
+ 
+  padding: 1em 1.5em;
+  text-decoration: none;
+}
+/*Especificidad: 012*/
+
+nav a:hover {
+  background-color: #697B15;
+  color:#000000;
+}
+/*Especificidad: 012*/ 
+nav a:active {
+  color: rgb(0, 0, 0);
+  background-color: #53e935;
+}
+/*Especificidad: 001*/ 
+p{
+  font-family:'Times New Roman', Times, serif;
+  font-size: 1.2em;
+
+}
+
+/*Especificidad: 003*/ 
+body p a {
+  background-color: #4F4F4F;
+  color: #FFF47A;
+}
+/*Especificidad: 001*/
+footer{
+  color: white;
+  background-color:#000000 ;
+ 
+}
+
+/*Especificidad: 003*/
+footer p a {
+  color: #E8F6A4;
+  background-color:black;
+}
+
+/*Especificidad: 001*/
+h2{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 5em;
+  
+  margin-bottom: 0.3em;
+}
+
+/*Especificidad: 001*/
+h3{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.5em;
+  text-decoration: underline;
+  
+  margin-bottom: 1em;
+}
+
+/*Especificidad: 001*/
+h4{
+  margin-bottom: 1em;
+}
+/*Especificidad: 001*/
+audio{
+  width: 100%;
+}
+/*Especificidad: 001*/
+li{
+  font-family:'Times New Roman', Times, serif;
+  font-size: 1.1em;
+  
+}
+/*Especificidad: 001*/
+table {
+  width: fit-content;
+  border: 0.2em solid #fbfbfb;
+  border-collapse: collapse;
+  margin-left: 5%;
+  text-align: center;
+  margin-bottom: 1.2em;
+  
+}
+/*Especificidad: 001*/
+caption{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 4em;
+  text-decoration: underline;
+  margin-bottom: 0.3em;
+}
+
+/*Especificidad: 001*/
+th {
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #697B15;
+  color: #ffffff;
+  border: 0.1em solid #ffffff;
+  border-collapse: collapse;
+  font-size: 2em;
+  width: 8em;
+  
+  
+}
+
+/*Especificidad: 001*/
+td {
+  border-collapse: collapse;
+  background-color: #92928485;
+  color: #ffffff;
+  border: 0.1em solid #ffffff;
+  font-size: 1.5em;
+  height: 3em;
+  font-family:'Times New Roman', Times, serif;
+}
+/*Especificidad: 001*/
+input,textarea {
+  background-color: #ffffff; 
+  color:#000000;
+  width: 100%;
+  font-size: 1em;
+  height: 2em;
+  margin-bottom: 1em;
+}
+/*Especificidad: 001*/
+textarea{
+  min-height: 5em;
+  max-height: 16em;
+  resize: vertical;
+}
+/*Especificidad: 011*/
+input[type=submit] {
+  background-color: #34d6ff;
+  color: #000000;
+  margin-left: 33.33%;
+  width: 30%;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 3em;
+  margin-bottom: 1em;
+  
+}
+
+/*Especificidad: 001*/
+legend {
+  font-size: 2em;
+  font-family: 'Times New Roman', Times, serif;
+}
+/*Especificidad: 011*/
+input[type=radio] {
+  height: 1em;
+  width: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-size: 0.8em;
+ 
+}
+/*Especificidad: 011*/
+input[type=date] {
+ 
+  font-size: 1.5em;
+ 
+}
+/*Especificidad: 001*/
+label{
+  font-size: 1.5em;
+  font-family: 'Times New Roman', Times, serif;
+
+}
+
+
+
+
+
+
+
+

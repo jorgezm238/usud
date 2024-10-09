@@ -1,0 +1,9 @@
+
+/*Especificidad: 001*/
+header,footer{
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    
+}
+
