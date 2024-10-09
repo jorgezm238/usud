@@ -53,3 +53,34 @@ b= prompt("Escribe la altura:")
 alert("Area= " +(a*b/2));
 
 }
+
+function testUnidad2_7(){
+    let diametro;
+    let radio;
+    diametro= prompt("Introduce el diametro: ")
+    alert("La longitud es de : " + 3.14*diametro);
+    radio = prompt("Introduce el radio: ")
+    alert("El area es de: " + Math.PI *(radio*radio));
+
+
+}
+
+function testUnidad2_8(){
+    let nombre;
+    let apellido;
+    let poblacion;
+
+    nombre=prompt("Introduce tu nombre: ")
+    apellido= prompt("Introduce tu primer apellido: ")
+    poblacion=prompt("Introduce tu poblacion: ")
+
+    document.write('=======================');
+    document.write();
+    document.write('Hola, ' , nombre, ' ', apellido);
+    document.write('Adios, ' , poblacion);
+    document.write('=======================');
+    document.write();
+    
+
+
+}
