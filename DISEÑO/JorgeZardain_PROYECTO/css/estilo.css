@@ -1,63 +1,84 @@
-html, body {
-    height: 100%;
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+header {
+    background-color: #0073e6;
+    color: white;
+    text-align: center;
+    padding: 16px;
 }
 
 nav {
-    background-color: #FFA500;
-    padding: 1rem;
+    background-color: #f0ad4e;
+    padding: 8px;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+    gap: 16px;
 }
 
 nav a {
+    color: white;
     text-decoration: none;
-    color: black;
-    margin: 0 15px;
     font-weight: bold;
 }
 
-nav a:hover {
-    text-decoration: underline;
-}
-
-.banner {
-    background-size: cover;
-    background-position: center;
-    height: 100px;
+main {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    color: black;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    flex-direction: column; /* Las secciones se apilan verticalmente */
+    gap: 16px; /* Usamos px en vez de rem */
+    padding: 16px; /* Usamos px en vez de rem */
 }
 
-.banner h1 {
-    font-size: 3rem;
+section {
+    background-color: #fff;
+    padding: 16px; /* Usamos px en vez de rem */
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
-.content {
-    flex: 1;
-    padding: 20px;
+aside {
+    background-color: #ffe4c4;
+    padding: 16px; /* Usamos px en vez de rem */
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
-.content h2 {
-    color: #FFA500;
+/* Para pantallas grandes */
+@media (min-width: 768px) {
+    main {
+        flex-direction: row; /* Cambiar a horizontal */
+    }
+
+    section {
+        flex: 1 1 30%; /* Las sections ocupan el 30% del ancho */
+    }
+
+    aside {
+        flex: 1 1 30%; /* El aside ocupa el 30% del ancho */
+        margin-left: 16px; /* Añadir espacio entre las sections y el aside */
+    }
 }
 
-
-.footer {
+footer {
     background-color: #333;
     color: white;
     text-align: center;
-    padding: 10px;
-    margin-top: auto;
+    padding: 16px;
 }
-/*
-
-
-
-*/
