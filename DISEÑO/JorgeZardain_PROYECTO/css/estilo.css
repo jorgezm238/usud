@@ -1,84 +1,227 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+  box-sizing: border-box;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #f4f4f9;
-    color: #333;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #d8c9a3; /* Beige claro */
+  background-attachment: fixed;
+  line-height: 1.6;
+  color: #333333; /* Gris oscuro para el texto */
+  scroll-behavior: smooth;
 }
 
+/*Estilo del header */
 header {
-    background-color: #0073e6;
-    color: white;
-    text-align: center;
-    padding: 16px;
+  background-color: #d8c9a3; /* Beige intermedio */
+  color: #333333;
+  text-align: center;
+  padding: 24px 0; /* 1.5rem -> 24px */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+header h1 {
+  margin: 0;
+  font-size: 40px; /* 2.5rem -> 40px */
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/*Estilo del nav */
 nav {
-    background-color: #f0ad4e;
-    padding: 8px;
-    text-align: center;
+  margin-top: 10px;
+  background: #b69d7e; /* Beige más oscuro */
+  border-top: 3px solid #f1e1b3; /* Beige claro */
+  border-bottom: 3px solid #f1e1b3; /* Beige claro */
 }
 
 nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
 }
 
 nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
+  text-decoration: none;
+  color: #333333;
+  font-weight: bold;
+  font-size: 19.2px; /* 1.2rem -> 19.2px */
+  text-transform: uppercase;
+  padding: 16px 24px; /* 1rem, 1.5rem -> 16px, 24px */
+  border-radius: 5px;
 }
 
-main {
-    display: flex;
-    flex-direction: column; /* Las secciones se apilan verticalmente */
-    gap: 16px; /* Usamos px en vez de rem */
-    padding: 16px; /* Usamos px en vez de rem */
+nav a:hover {
+  background: #f1e1b3; /* Beige claro */
+  color: #333333; /* Gris oscuro */
+  transform: scale(1.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-section {
-    background-color: #fff;
-    padding: 16px; /* Usamos px en vez de rem */
-    border: 1px solid #ddd;
-    border-radius: 5px;
+/*Sección 1: Historia */
+.historia {
+  background: url('/DISEÑO/JorgeZardain_PROYECTO/img/im2.jpg');
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px; /* 2rem -> 32px */
 }
 
-aside {
-    background-color: #ffe4c4;
-    padding: 16px; /* Usamos px en vez de rem */
-    border: 1px solid #ddd;
-    border-radius: 5px;
+.historia h2 {
+  font-size: 40px; /* 2.5rem -> 40px */
+  margin-bottom: 16px; /* 1rem -> 16px */
 }
 
-/* Para pantallas grandes */
-@media (min-width: 768px) {
-    main {
-        flex-direction: row; /* Cambiar a horizontal */
-    }
-
-    section {
-        flex: 1 1 30%; /* Las sections ocupan el 30% del ancho */
-    }
-
-    aside {
-        flex: 1 1 30%; /* El aside ocupa el 30% del ancho */
-        margin-left: 16px; /* Añadir espacio entre las sections y el aside */
-    }
+.historia p {
+  font-size: 19.2px; /* 1.2rem -> 19.2px */
+  text-align: left;
+  line-height: 1.6;
+  margin: 0 auto;
 }
 
+/*Sección 2: Tradiciones */
+.tradicion {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
+  min-height: 100vh;
+  background-color: #d8c9a3;
+  padding: 32px; /* 2rem -> 32px */
+}
+
+.tradicion h2 {
+  color: white;
+  margin-bottom: 32px; /* 2rem -> 32px */
+  font-size: 32px; /* 2rem -> 32px */
+  text-transform: uppercase;
+}
+
+.tradicion ul {
+  background-color: #e5d1a1; /* Beige claro */
+  color: #333333; /* Gris oscuro */
+  list-style-type: disc;
+  text-align: left;
+  padding: 48px; /* 30px -> 48px */
+  border-radius: 30px;
+  box-shadow: 0 22px 22px rgba(0, 0, 0, 0.3);
+  width: 60%; /* Ajusta el ancho de la lista */
+  margin-right: 32px;
+}
+
+.tradicion ul li {
+  margin-bottom: 16px; /* 1rem -> 16px */
+  font-size: 19.2px; /* 1.2rem -> 19.2px */
+  color: #333333;
+}
+.tradicion img {
+  width: 40%;
+  height: auto;
+}
+
+/*Sección 3: Gastronomía */
+.gas {
+  background: #d8c9a3;
+  padding: 32px; /* 2rem -> 32px */
+}
+
+.gas h2 {
+  color: #333333;
+  margin-bottom: 32px; /* 2rem -> 32px */
+  font-size: 32px; /* 2rem -> 32px */
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.gas article {
+  display: flex;
+  color: #333333; /* Gris oscuro */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #e5d1a1; /* Beige claro */
+  padding: 48px; /* 30px -> 48px */
+  border-radius: 30px;
+  box-shadow: 0 22px 22px rgba(0, 0, 0, 0.3);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.gas article img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 24px; /* 1.5rem -> 24px */
+  border-radius: 8px;
+}
+
+.gas article p {
+  font-size: 19.2px; /* 1.2rem -> 19.2px */
+  color: #333333; /* Gris oscuro para el texto */
+  line-height: 1.6;
+  text-align: justify;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/*Galería de imágenes */
+.Galeria {
+  background: #b69d7e;
+  color: #333333;
+  padding: 35px; /* 2rem -> 32px */
+}
+
+.Galeria h2 {
+  text-align: center;
+}
+
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; /* 1rem -> 16px */
+  justify-content: center;
+}
+
+.gallery-img {
+  width: 230px; /*Pa cambiar el tamaño de la imagen*/
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Footer */
 footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 16px;
+  background-color: #d8c9a3;
+  color: #333333;
+  text-align: center;
+  padding: 16px 0; /* 1rem -> 16px */
+  margin-top: 48px; /* 3rem -> 48px */
+  border-top: 2px solid #f1e1b3;
+}
+
+/* Responsividad */
+@media (max-width: 992px) {
+  nav ul {
+      flex-direction: column;
+      align-items: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .image-container {
+      flex-direction: column;
+      align-items: center;
+  }
+  .gallery-img {
+      width: 100%;
+      max-width: 300px;
+  }
 }

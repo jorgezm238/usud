@@ -1,0 +1,75 @@
+#asideGame {
+	margin-top: 120px;
+}
+article p, figcaption {
+	margin-left: 5px;
+}
+/*
+table { border: 1px solid black;
+border-collapse: collapse;
+width: 450px;
+text-align: center;
+background-color: #CFD8DC;
+margin-left: auto;
+margin-right: auto;
+margin-top: 50px;
+}
+
+th, em  {
+	font-family: fantasy;
+}
+
+th, td {
+font-size: 0.8em;
+border: 1px solid black;
+padding: 2px;
+}
+*/
+ img {
+	width: 150px;
+	height: 100px;
+}
+
+ form {
+ 	background-color: #FFFADD;
+ 	border: 1px solid #FFCC70;
+ 	padding: 2px;
+ }
+ input, textarea {
+ 	width: auto;
+ }
+
+ fieldset {
+ 	width: 250px;
+ 	margin-left: 30%;
+ 	margin-top: 30px;
+ 	margin-bottom: 30px;
+ 	border-color: #8ECDDD;
+ }
+
+ #contacta {
+ 	margin-left: auto;
+ 	text-decoration: none;
+ 	background: none;
+ 	font-size: 150%;
+ }
+
+#artForm {
+	margin-left: 220px;
+	margin-right: 130px;
+	margin-top: 80px;
+}
+
+.boton {
+	width: 100px;
+}
+
+.boton:hover {
+	color: #22668D;
+}
+
+#rising {
+	width: 250px; 
+	height: 100px;
+}
+
