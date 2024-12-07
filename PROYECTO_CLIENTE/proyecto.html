@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaderAvilés - Gestión de Pedidos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 20px;
+        }
+        header, section {
+            margin-bottom: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, button {
+            margin-bottom: 10px;
+            padding: 8px;
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background-color: #e9ecef;
+            margin-bottom: 5px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Gestión de Pedidos - MaderAvilés</h1>
+    </header>
+    <main>
+        <!-- Gestión de Pedidos -->
+        <section>
+            <h2>Gestión de Pedidos</h2>
+            <form id="pedido-form">
+                <label for="pedido-numero">Número de pedido:</label>
+                <input type="number" id="pedido-numero" required>
+                <label for="cliente-nombre">Nombre del cliente:</label>
+                <input type="text" id="cliente-nombre" required maxlength="50">
+                <label for="fecha-pedido">Fecha:</label>
+                <input type="date" id="fecha-pedido" required>
+                <button type="entregar">Agregar Pedido</button>
+            </form>
+            <ul id="pedido-lista"></ul>
+        </section>
+
+        <!-- Gestión de Piezas -->
+        <section>
+            <h2>Gestión de Piezas</h2>
+            <form id="pieza-form">
+                <label for="pieza-numero">Número de pieza:</label>
+                <input type="number" id="pieza-numero" required>
+                <label for="pedido-asociado">Número de pedido asociado:</label>
+                <input type="number" id="pedido-asociado" required>
+                <label for="pieza-largo">Largo (cm):</label>
+                <input type="number" id="pieza-largo" required min="0.1" step="0.1">
+                <label for="pieza-ancho">Ancho (cm):</label>
+                <input type="number" id="pieza-ancho" required min="0.1" step="0.1">
+                <label for="pieza-grosor">Grosor (cm):</label>
+                <input type="number" id="pieza-grosor" required min="0.1" step="0.1">
+                <label for="pieza-color">Color:</label>
+                <input type="text" id="pieza-color" required>
+                <button type="entregar">Agregar Pieza</button>
+            </form>
+            <ul id="pieza-lista"></ul>
+        </section>
+
+        <!-- Detalle de Pedido -->
+        <section>
+            <h2>Detalle del Pedido</h2>
+            <label for="detalle-numero">Número de pedido:</label>
+            <input type="number" id="detalle-numero">
+            <button id="consultar-detalle">Consultar Detalle</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Número de Pieza</th>
+                        <th>Largo</th>
+                        <th>Ancho</th>
+                        <th>Grosor</th>
+                        <th>Color</th>
+                        <th>Superficie</th>
+                        <th>Volumen</th>
+                    </tr>
+                </thead>
+                <tbody id="detalle-tabla"></tbody>
+            </table>
+        </section>
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
+            let piezas = JSON.parse(localStorage.getItem("piezas")) || [];
+
+            const pedidoForm = document.getElementById("pedido-form");
+            const piezaForm = document.getElementById("pieza-form");
+            const detalleNumero = document.getElementById("detalle-numero");
+            const consultarDetalle = document.getElementById("consultar-detalle");
+            const detalleTabla = document.getElementById("detalle-tabla");
+            const pedidoLista = document.getElementById("pedido-lista");
+            const piezaLista = document.getElementById("pieza-lista");
+
+            function guardarLocal() {
+                localStorage.setItem("pedidos", JSON.stringify(pedidos));
+                localStorage.setItem("piezas", JSON.stringify(piezas));
+            }
+
+            function renderPedidos() {
+                pedidoLista.innerHTML = pedidos.map(p => `<li>#${p.numero} - ${p.cliente} (${p.fecha})</li>`).join("");
+            }
+
+            function renderPiezas() {
+                piezaLista.innerHTML = piezas.map(p => `<li>#${p.numero} - Pedido: ${p.pedido}, Color: ${p.color}</li>`).join("");
+            }
+
+            pedidoForm.addEventListener("entregar", (e) => {
+                e.preventDefault();
+                const numero = parseInt(document.getElementById("pedido-numero").value);
+                const cliente = document.getElementById("cliente-nombre").value;
+                const fecha = document.getElementById("fecha-pedido").value;
+
+                if (pedidos.some(p => p.numero === numero)) {
+                    alert("El número de pedido ya existe.");
+                    return;
+                }
+
+                pedidos.push({ numero, cliente, fecha });
+                guardarLocal();
+                renderPedidos();
+                pedidoForm.reset();
+            });
+
+            piezaForm.addEventListener("entregar", (e) => {
+                e.preventDefault();
+                const numero = parseInt(document.getElementById("pieza-numero").value);
+                const pedido = parseInt(document.getElementById("pedido-asociado").value);
+                const largo = parseFloat(document.getElementById("pieza-largo").value);
+                const ancho = parseFloat(document.getElementById("pieza-ancho").value);
+                const grosor = parseFloat(document.getElementById("pieza-grosor").value);
+                const color = document.getElementById("pieza-color").value;
+
+                if (!pedidos.some(p => p.numero === pedido)) {
+                    alert("El número de pedido no existe.");
+                    return;
+                }
+
+                piezas.push({ numero, pedido, largo, ancho, grosor, color });
+                guardarLocal();
+                renderPiezas();
+                piezaForm.reset();
+            });
+
+            consultarDetalle.addEventListener("click", () => {
+                const pedidoNumero = parseInt(detalleNumero.value);
+                detalleTabla.innerHTML = "";
+
+                const piezasFiltradas = piezas.filter(p => p.pedido === pedidoNumero);
+                piezasFiltradas.forEach(pieza => {
+                    const superficie = pieza.largo * pieza.ancho;
+                    const volumen = superficie * pieza.grosor;
+
+                    detalleTabla.innerHTML += `
+                        <tr>
+                            <td>${pieza.numero}</td>
+                            <td>${pieza.largo}</td>
+                            <td>${pieza.ancho}</td>
+                            <td>${pieza.grosor}</td>
+                            <td>${pieza.color}</td>
+                            <td>${superficie.toFixed(2)}</td>
+                            <td>${volumen.toFixed(2)}</td>
+                        </tr>
+                    `;
+                });
+            });
+
+            renderPedidos();
+            renderPiezas();
+        });
+    </script>
+</body>
+</html>
