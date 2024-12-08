@@ -25,7 +25,7 @@
         <label>Seccion: </label>
         <input type="text" id="seccion" placeholder="Verduras" required>
         <br><br>
-        <button type="button" onclick="agregar()">Añadir Producto</button>
+        <button type="button" onclick="agregar()">Agregar Productos</button>
         <button type="button" onclick="mostrarProductos()">Mostrar Productos</button>
         <button type="button" onclick="eliminarProducto()">Eliminar Producto</button>
         <button type="button" onclick="modificarProducto()">Modificar Producto</button>
@@ -51,7 +51,6 @@
         }
 
         function agregar() {
-            event.preventDefault(); // Previene que el formulario recargue la página
             const nombre = document.getElementById("nombre").value.trim();
             const precio = parseFloat(document.getElementById("precio").value);
             const seccion = document.getElementById("seccion").value.trim();
@@ -59,7 +58,7 @@
 
             if (!nombre || isNaN(precio) || precio <= 0) {
                 alert("Por favor, introduce datos válidos.");
-                return;
+                return;// que no se ejecute lo de abajo si pasa por aqui
             }
 
             const nuevoProducto = new Producto(nombre, precio, seccion, id);
@@ -70,8 +69,6 @@
         }
 
         function mostrarProductos() {
-    // Previene que el formulario recargue la página al enviarse
-    event.preventDefault();
 
     const listaProductos = document.getElementById("listaProductos");
     // Limpia el contenido actual de "listaProductos" para evitar duplicados
@@ -89,7 +86,7 @@
     if (productos.length === 0) {
         // Si no hay productos, muestra un mensaje indicando que no hay registros
         listaProductos.innerHTML = "<li>No hay productos registrados.</li>";
-        return; // Finaliza la ejecución de la función
+        
     }
     else{
     // Si hay productos en el array, recorre cada uno con un bucle forEach
@@ -153,7 +150,7 @@ function modificarProducto() {
         alert("Producto no encontrado."); // Muestra una alerta con el mensaje de error
         return; // Sale de la función si el producto no existe
     }
-    
+
     // Si el producto existe, solicita el nuevo nombre y actualiza el producto
     producto.nombre = prompt("Nuevo nombre:", producto.nombre); // Pide al usuario el nuevo nombre, con el valor actual como predeterminado
 
