@@ -73,12 +73,9 @@
     // Previene que el formulario recargue la página al enviarse
     event.preventDefault();
 
-    // Selecciona el elemento con el id "listaProductos" del DOM
     const listaProductos = document.getElementById("listaProductos");
-
     // Limpia el contenido actual de "listaProductos" para evitar duplicados
     listaProductos.innerHTML = "";
-
     // Crea un nuevo elemento <h1> para el título
     const titulo = document.createElement("h1");
 
@@ -94,7 +91,7 @@
         listaProductos.innerHTML = "<li>No hay productos registrados.</li>";
         return; // Finaliza la ejecución de la función
     }
-
+    else{
     // Si hay productos en el array, recorre cada uno con un bucle forEach
     productos.forEach((producto) => {
         // Crea un nuevo elemento <p> para mostrar cada producto
@@ -106,48 +103,93 @@
         // Añade el <p> con el producto al contenedor "listaProductos"
         listaProductos.appendChild(fila);
     });
+    }
 }
 
 
-        function eliminarProducto() {
-            const nombre = prompt("Introduce el nombre del producto a eliminar:");
-            const index = productos.findIndex(a => a.nombre.toLowerCase() === nombre.toLowerCase());
+function eliminarProducto() {
+    // Solicita al usuario que introduzca el nombre del producto a eliminar
+    const nombre = prompt("Introduce el nombre del producto a eliminar:");
 
-            if (index === -1) {
-                alert("Producto no encontrado.");
-                return;
-            }
+    // Busca el índice del producto que coincide con el nombre introducido
+    // Ignora mayúsculas y minúsculas al comparar los nombres
+    const index = productos.findIndex(a => a.nombre.toLowerCase() === nombre.toLowerCase());
 
-            productos.splice(index, 1);
-            localStorage.setItem("productos", JSON.stringify(productos));
-            alert("Producto eliminado correctamente.");
-            mostrarProductos();
-        }
+    // Si el producto no se encuentra, findIndex devuelve -1
+    if (index === -1) {
+        alert("Producto no encontrado."); // Muestra un mensaje al usuario
+        return; // Sale de la función sin realizar ninguna acción
+    }
 
-        function modificarProducto() {
-            const nombre = prompt("Introduce el nombre del producto a modificar:");
-            const producto = productos.find(a => a.nombre.toLowerCase()=== nombre.toLowerCase());
+// Utiliza el método splice para eliminar un elemento del array "productos".
+// splice(index, 1) tiene dos argumentos:
+// - "index": es la posición del elemento que queremos eliminar en el array.
+// - "1": indica que queremos eliminar solo un elemento a partir de esa posición.
+productos.splice(index, 1);
 
-            if (!producto) {
-                alert("Producto no encontrado.");
-                return;
-            }
-            producto.nombre = prompt("Nuevo nombre:", producto.nombre);
-            producto.precio = parseFloat(prompt("Nueva precio:", producto.precio));
-            producto.seccion = prompt("Nueva seccion:", producto.seccion); 
-            localStorage.setItem("productos", JSON.stringify(productos));
-            alert("Producto modificado correctamente.");
-            mostrarProductos();
-        }
-        window.onload = function() {
-            const datosProductos = localStorage.getItem("productos");
-            if (datosProductos) {
-                productos = JSON.parse(datosProductos).map(producto => 
-                    new Producto(producto.nombre, producto.precio, producto.seccion, producto.id)
-                );
-                mostrarProductos();
-            }
-        };
+// Después de ejecutar esta línea, el producto ubicado en "index" será eliminado del array "productos".
+
+
+    // Actualiza el almacenamiento local con el nuevo estado del array "productos"
+    localStorage.setItem("productos", JSON.stringify(productos));
+
+    // Muestra un mensaje confirmando la eliminación del producto
+    alert("Producto eliminado correctamente.");
+
+    // Llama a la función "mostrarProductos" para actualizar la interfaz de usuario
+    mostrarProductos();
+}
+
+
+function modificarProducto() {
+    // Solicita al usuario el nombre del producto a modificar
+    const nombre = prompt("Introduce el nombre del producto a modificar:");
+
+    // Busca el producto en el array "productos" que coincida con el nombre ingresado, ignorando mayúsculas y minúsculas
+    const producto = productos.find(a => a.nombre.toLowerCase() === nombre.toLowerCase());
+
+    // Si no se encuentra el producto, muestra un mensaje de error y termina la función
+    if (!producto) {
+        alert("Producto no encontrado."); // Muestra una alerta con el mensaje de error
+        return; // Sale de la función si el producto no existe
+    }
+    
+    // Si el producto existe, solicita el nuevo nombre y actualiza el producto
+    producto.nombre = prompt("Nuevo nombre:", producto.nombre); // Pide al usuario el nuevo nombre, con el valor actual como predeterminado
+
+    // Pide al usuario el nuevo precio y lo convierte a número (tipo float)
+    producto.precio = parseFloat(prompt("Nuevo precio:", producto.precio));
+
+    // Pide al usuario la nueva sección y actualiza el campo correspondiente
+    producto.seccion = prompt("Nueva seccion:", producto.seccion); 
+
+    // Guarda el array actualizado de productos en el almacenamiento local (localStorage)
+    localStorage.setItem("productos", JSON.stringify(productos));
+
+    // Muestra un mensaje al usuario indicando que el producto fue modificado correctamente
+    alert("Producto modificado correctamente.");
+
+    // Llama a la función "mostrarProductos" para actualizar la lista visualizada de productos
+    mostrarProductos();
+}
+
+// Esta función se ejecuta cuando la página se carga completamente
+window.onload = function() {
+    // Obtiene el array de productos desde el almacenamiento local
+    const datosProductos = localStorage.getItem("productos");
+
+    // Si existen productos en el almacenamiento local, los convierte de JSON a objetos JavaScript
+    if (datosProductos) {
+        // Convierte los datos de JSON a objetos, y por cada objeto creado, se crea una nueva instancia de la clase Producto
+        productos = JSON.parse(datosProductos).map(producto => 
+            new Producto(producto.nombre, producto.precio, producto.seccion, producto.id)
+        );
+        
+        // Llama a la función "mostrarProductos" para mostrar la lista actualizada de productos en la interfaz
+        mostrarProductos();
+    }
+};
+
     </script>
 </body>
 </html>
