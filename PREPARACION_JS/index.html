@@ -5,228 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notas</title>
     <style>
-        html{text-align: left;}
-    
+        html {text-align: left;}
     </style>
 </head>
 <body>
     <form>
-<h1>Sistema de calificación de estudiantes</h1>
-<label>Nombre</label>
-<input type="text" id="nombre" placeholder="David" required>
-<br><br>
-<label>Apellido</label>
-<input type="text" id="apellido" placeholder="Garcia" required>
-<br><br>
-<label>Nota 1</label>
-<input type="text" id="nota1" placeholder="7.5" required min ="0" step="0.1">
-<br><br>
-<label>Nota 2</label>
-<input type="text" id="nota2" placeholder="7.5" required min ="0" step="0.1">
-<br><br>
-<label>Nota 3</label>
-<input type="text" id="nota3" placeholder="7.5" required min ="0" step="0.1">
-<br><br>
+        <h1>Sistema de calificación de estudiantes</h1>
+        <label>Nombre</label>
+        <input type="text" id="nombre" placeholder="David" required>
+        <br><br>
+        <label>Apellido</label>
+        <input type="text" id="apellido" placeholder="Garcia" required>
+        <br><br>
+        <label>Nota 1</label>
+        <input type="text" id="nota1" placeholder="7.5" required min="0" step="0.1">
+        <br><br>
+        <label>Nota 2</label>
+        <input type="text" id="nota2" placeholder="7.5" required min="0" step="0.1">
+        <br><br>
+        <label>Nota 3</label>
+        <input type="text" id="nota3" placeholder="7.5" required min="0" step="0.1">
+        <br><br>
 
-<button type="button" onclick="anadirAlumno()">Añadir alumno</button>
-<button type="button" onclick="modificarAlumno()">Modificar Alumno</button>
-<button type="button" onclick="calcularMedia()">Calcular Media</button>
-<button type="button" onclick="eliminarAlumno()">Eliminar Alumno</button>
+        <button type="button" onclick="anadirAlumno()">Añadir alumno</button>
+        <button type="button" onclick="modificarAlumno()">Modificar Alumno</button>
+        <button type="button" onclick="calcularMedia()">Calcular Media</button>
+        <button type="button" onclick="eliminarAlumno()">Eliminar Alumno</button>
 
-<h2>Personas Registradas</h2>
-<table id="tablaEstudiantes">
-<thead>
-    <tr>
-        <th>Nombre: </th>
+        <h2>Personas Registradas</h2>
+        <table id="tablaEstudiantes">
+            <thead>
+                <tr>
+                    <th>Nombre: </th>
+                    <th>Apellido: </th>
+                    <th>Nota 1: </th>
+                    <th>Nota 2: </th>
+                    <th>Nota 3: </th>
+                    <th>Media: </th>
+                    <th>Estado: </th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Se añadirán las personas dinámicamente -->
+            </tbody>
+        </table>
+        <h2>Lista Suspensos</h2>
+        <ul id="listaNotas"></ul>
         
-        <th>Apellido: </th>
-        
-        <th>Nota 1: </th>
-        
-        <th>Nota 2: </th>
-        
-        <th>Nota 3: </th>
-        
-        <th>Media: </th>
-
-        <th>Estado: </th>
-       
-    </tr>
-</thead>
-    <tbody>
-        <!-- Se añadirán las personas dinámicamente -->
-    </tbody>
-
-<ul id="listaNotas"></ul>
     </form>
 
-<script>
-    
-class Estudiante{
-constructor(nombre, apellido, nota1, nota2, nota3){
-    this.nombre=nombre;
-    this.apellido=apellido
-    this.nota1=nota1;
-    this.nota2=nota2;
-    this.nota3=nota3;
-}
-modificarUsuario(nuevoNombre, nuevoApellido, nuevaNota){
-    this.nombre=nuevoNombre;
-    this.apellido=nuevoApellido;
-    this.nota=nuevaNota;
-    }
-}
-
-class Resultado{
-constructor(){
-    this.mediaNotas=[];
-}
-CalcularMedia(estudiante){
-    const media = (parseFloat(estudiante.nota1) + parseFloat(estudiante.nota2) + parseFloat(estudiante.nota3)) / 3;
-    let estado;
-    
-    if (media >= 5 && media <6) {
-        estado= 'Suficiente';
-    } 
-    if(media >=6 && media <7){
-        estado='Bien';
-    }
-    
-    if(media >=7 && media <9){
-        estado ='Notable';
-    }
-
-    if (media <5){
-        estado ='Insuficiente';
-    }
-
-    if(media>=9 && media<=10){
-        estado='Sobresaliente';
-    }
-    return { media: media.toFixed(2), estado };
-}
-registrarAlumno(nombre, media){
-    this.mediaNotas.push(nombre,media);
-}
-
-ObtenerRegistrosSuspensos(){
-    return this.mediaNotas;
-}
-}
-
-//variables globales
-const estudiantes=[];
-const calculo = new Resultado();
-
-function anadirAlumno(){
-    const nombre = document.getElementById('nombre').value.trim();
-    const apellido = document.getElementById('apellido').value.trim();
-    const nota1= parseFloat(document.getElementById('nota1').value);
-    const nota2= parseFloat(document.getElementById('nota2').value);
-    const nota3= parseFloat(document.getElementById('nota3').value);
-
-    if (isNaN(nota1) || isNaN(nota2) || isNaN(nota3) || nota1 > 10 || nota2 > 10 || nota3 > 10) {
-    alert('Las notas deben ser números entre 0 y 10.');
-    limpiarCampos();
-    return;
-}
-
-    
-    if(nombre && apellido && nota1 && nota2 && nota3){
-        const nuevoAlumno = new Estudiante(nombre, apellido,nota1,nota2,nota3);
-        estudiantes.push(nuevoAlumno);
-
-        actualizarTabla();
-        limpiarCampos();
-    } else{
-        alert('Completa todos los campos');
-    }
-}
-
-function modificarAlumno() {
-    const nombre = document.getElementById('nombre').value.trim();
-    const estudiante = estudiantes.find(e => e.nombre === nombre);
-
-    if (estudiante) {
-    const nota1= parseFloat(document.getElementById('nota1').value);
-    const nota2= parseFloat(document.getElementById('nota2').value);
-    const nota3= parseFloat(document.getElementById('nota3').value);
-
-        estudiante.nota1 = nota1;
-        estudiante.nota2 = nota2;
-        estudiante.nota3 = nota3;
-        actualizarTabla();
-        limpiarCampos();
-    } else {
-        alert('La persona no está registrada en el sistema.');
-    }
-}
-
-function calcularMedia(){
-const tabla = document.getElementById('tablaEstudiantes').querySelector('tbody');
-tabla.innerHTML='';
-
-estudiantes.forEach(estudiante => {
-    const resultado = calculo.CalcularMedia(estudiante);
-    const fila = ` 
-          <tr>
-            <td>${estudiante.nombre}</td>
-            <td>${estudiante.apellido}</td>
-            <td>${estudiante.nota1}</td>
-            <td>${estudiante.nota2}</td>
-            <td>${estudiante.nota3}</td>
-            <td>${resultado.media}</td>
-            <td>${resultado.estado}</td>
-          </tr>
-    `;
-    tabla.innerHTML += fila;
-
-});
-actualizarListaSuspensos();
-}
-function actualizarTabla() {
-            const tabla = document.getElementById('tablaEstudiantes').querySelector('tbody');
-            tabla.innerHTML = '';
-
-            estudiantes.forEach(estudiante => {
-                const fila = `
-                    <tr>
-                        <td>${estudiante.nombre}</td>
-                        <td>${estudiante.apellido}</td>
-                        <td>${estudiante.nota1}</td>
-                        <td>${estudiante.nota2}</td>
-                        <td>${estudiante.nota3}</td>
-                        <td>-</td>
-                        <td>-</td>
-                    </tr>
-                `;
-                tabla.innerHTML += fila;
-            });
-        }
-        function actualizarListaSuspensos() {
-    const lista = document.getElementById('listaNotas');
-    lista.innerHTML = '';
-
-    estudiantes.forEach(estudiante => {
-        const { media, estado } = calculo.CalcularMedia(estudiante);
-        if (estado === 'Insuficiente') {
-            lista.innerHTML += `<li>${estudiante.nombre} ${estudiante.apellido}: ${media}</li>`;
-        }
-    });
-}
-
-
-    function limpiarCampos() {
-        document.getElementById('nombre').value = '';
-        document.getElementById('apellido').value = '';
-        document.getElementById('nota1').value = '';
-        document.getElementById('nota2').value = '';
-        document.getElementById('nota3').value = '';
-    }
-
-
-
-
-</script>
+    <script src="./main.js">
+        //
+        
+    </script>
 </body>
 </html>
