@@ -118,22 +118,7 @@ function modificarVuelo() {
     vuelo.nplazas = nplazas;
     vuelo.importe = importe;
 
-    // Actualizar la tabla y la lista de vuelos rentables
-    const ingresoEstimado = vuelo.calcularIngreso();
-    const rentableIndex = vuelosRentables.findIndex(v => v.codigo === codigo);
-
-    if (ingresoEstimado > 20000) {
-        if (rentableIndex === -1) {
-            vuelosRentables.push(new VueloMuyRentable(codigo, ingresoEstimado));
-        } else {
-            vuelosRentables[rentableIndex].ingresoEstimado = ingresoEstimado;
-        }
-    } else if (rentableIndex !== -1) {
-        vuelosRentables.splice(rentableIndex, 1);
-    }
-
     actualizarTabla();
-    actualizarTablaMuyRentables();
     limpiarCampos();
 }
 
