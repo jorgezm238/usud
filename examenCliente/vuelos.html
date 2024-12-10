@@ -4,166 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlightEX</title>
+    <style>
+        html{text-align: left;}
+        
+    </style>
 </head>
 <body>
     <h1>Vuelos</h1>
     <label>Código</label>
     <input type="text" id="codigo" placeholder="1" required>
     <label>Nº de plazas</label>
-    <input type="number" id="nplazas" placeholder="23" required min="0">
+    <input type="number" id="nplazas" placeholder="23" required min="1">
     <label>Importe</label>
-    <input type="text" id="importe" placeholder="234.23" required min="0" step="0.01">
+    <input type="number" id="importe" placeholder="234.23" required min="0" step="0.01">
     <button type="button" onclick="anadirVuelo()">Añadir</button>
     <button type="button" onclick="modificarVuelo()">Modificar</button>
     <button type="button" onclick="calcularVuelo()">Calcular</button>
 
+    <h2>Lista de Vuelos</h2>
     <table id="vuelos">
         <thead>
             <tr>
-                <th>Codigo: </th>
-                <th>Nº Plazas: </th>
-                <th>Importe: </th>
-                <th>Precio Estimado: </th>
+                <th>Código</th>
+                <th>Nº Plazas</th>
+                <th>Importe</th>
+                <th>Ingreso Estimado</th>
             </tr>
         </thead>
         <tbody>
-            <!-- Se añadirán las personas dinámicamente -->
         </tbody>
     </table>
-    <h2>Lista vuelos muy rentables</h2>
-    <ul id="VuelosRentables">
 
+    <h2>Lista de Vuelos Muy Rentables</h2>
+    <ul id="VuelosRentables">
     </ul>
 
-<script>
-class Vuelo{
-    constructor(codigo, nplazas,importe){
-        this.codigo=codigo;
-        this.nplazas=nplazas;
-        this.importe=importe;
-    }
-    calcularIngreso(){
-        this.nplazas * this.importe;
-    }
-}
 
-class VueloMuyRentable {
-    constructor(codigo, ingresoEstimando){
-        this.codigo=codigo;
-        this.ingresoEstimado=ingresoEstimando;
-    }
-
-}
-
-//variables globales
-const vuelos = [];
-const vuelosRentable = [];
-
-function anadirVuelo(){
-const codigo = document.getElementById('codigo').value.trim();
-const nplazas = document.getElementById('nplazas').value;
-const importe = parseFloat(document.getElementById('importe').value);
-
-if (isNaN(codigo) || isNaN(nplazas) || isNaN(importe)) {
-        alert('Completa todos los campos');
-        limpiarCampos();
-        return;
-    }
-
-if (codigo && nplazas && importe){
-const nuevoVuelo = new Vuelo(codigo, nplazas,importe);
-vuelos.push(nuevoVuelo);
-actualizarTabla();
-limpiarCampos();
-
-} else{
-    alert('Completa todos los campos');
-}
-
-}
-function modificarVuelo(){
-    const codigo = document.getElementById('codigo').value.trim();
-    const vuelo = vuelos.find(v => v.codigo === codigo);
-
-    if (codigo){
-        const nplazas = document.getElementById('nplazas' .value);
-        const importe = parseFloat(document.getElementById('importe'));
-
-        vuelo.nplazas=nplazas;
-        vuelo.importe=importe;
-        actualizarTabla();
-        limpiarCampos();
-    } else{
-        alert('El vuelo no está registrado.');
-    }
-
-}
-
-function calcularVuelo(){
-const ingresoEstimando = document.getElementById
-const codigo = document.getElementById(codigo).value.trim();
-if (codigo){
-    const vuelo = vuelo.find(v=>v.codigo===codigo)
-    let categoria;
-    if(vuelo){
-        const precioEstimado = vuelo.calcularIngreso;
-
-        let categoria ;
-        if(precioEstimado <10000){
-            categoria='Poco rentable'
-        }
-        if(precioEstimado >=10000 && precioEstimado<20000){
-            categoria='Rentable'
-        }
-        if(precioEstimado >=20000){
-            categoria='Muy rentable'
-        }
-        alert (`El vuelo con código ${codigo} tiene un precio estimado de ${precioEstimado} y una categoria de ${categoria}`);
-    } 
-    
-}
-else{
-        alert('Ingrese el codigo de vuelo para calcular');
-    }
-}
-
-function actualizarTabla(){
-    const tabla = document.getElementById('vuelos').querySelector('tbody');
-    tabla.innerHTML= '';
-
-    vuelos.forEach(vuelo => {
-    const fila = `
-    <tr>
-                <td>${vuelo.codigo}</td>
-                <td>${vuelo.nplazas}</td>
-                <td>${vuelo.importe}</td>
-    </tr>
-    `;
-    tabla.innerHTML+=fila;
-    });
-}
-function limpiarCampos(){
-    document.getElementById('codigo').value='';
-    document.getElementById('nplazas').value='';
-    document.getElementById('importe').value='';
-}
-
-function actualizarTablaMuyRentables(){
-const lista = document.getElementById('VueloRentables')
-lista.innerHTML = '';
-vuelos.forEach(vuelo =>{
-
-
-
-
-});
-
-}
-
-
-
+<script src="./vuelos.js">
 
 </script>
-
 </body>
 </html>
