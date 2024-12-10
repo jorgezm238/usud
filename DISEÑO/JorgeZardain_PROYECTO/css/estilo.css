@@ -112,12 +112,17 @@ nav a:hover {
   background-color: #e5d1a1; 
   color: #333333; 
   list-style-type: disc;
-  text-align: left;
+  text-align: center;
   padding: 48px; 
   border-radius: 30px;
   box-shadow: 0 22px 22px rgba(0, 0, 0, 0.3);
-  width: 60%; /* Ajusta el ancho de la lista */
+  width: 95%; /* Ajusta el ancho de la lista */
   margin-right: 32px;
+}
+.ancho{
+  display: flex;
+  text-align: center;
+  align-items: center;
 }
 
 
@@ -196,7 +201,7 @@ nav a:hover {
 }
 
 .gallery-img {
-  width: 230px; /*Pa cambiar el tamaño de la imagen*/
+  width: 400px; /*Pa cambiar el tamaño de la imagen*/
   height: auto;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -259,6 +264,7 @@ footer {
   
   .tradicion ul li {
     font-size: 30px;
+    text-align: left;
   }
   
   .gas article p {
