@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlightEX</title>
+</head>
+<body>
+    <h1>Vuelos</h1>
+    <label>Código</label>
+    <input type="text" id="codigo" placeholder="1" required>
+    <label>Nº de plazas</label>
+    <input type="number" id="nplazas" placeholder="23" required min="1">
+    <label>Importe</label>
+    <input type="number" id="importe" placeholder="234.23" required min="0" step="0.01">
+    <button type="button" onclick="anadirVuelo()">Añadir</button>
+    <button type="button" onclick="modificarVuelo()">Modificar</button>
+    <button type="button" onclick="calcularVuelo()">Calcular</button>
+
+    <h2>Lista de Vuelos</h2>
+    <table id="vuelos">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nº Plazas</th>
+                <th>Importe</th>
+                <th>Ingreso Estimado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Se añadirán las filas dinámicamente -->
+        </tbody>
+    </table>
+
+    <h2>Lista de Vuelos Muy Rentables</h2>
+    <ul id="VuelosRentables">
+        <!-- Se añadirán los vuelos rentables dinámicamente -->
+    </ul>
+
+<script>
+// Clase Vuelo
+class Vuelo {
+    constructor(codigo, nplazas, importe) {
+        this.codigo = codigo;
+        this.nplazas = parseInt(nplazas);
+        this.importe = parseFloat(importe);
+    }
+
+    calcularIngreso() {
+        return this.nplazas * this.importe;
+    }
+}
+
+// Clase VueloMuyRentable
+class VueloMuyRentable {
+    constructor(codigo, ingresoEstimado) {
+        this.codigo = codigo;
+        this.ingresoEstimado = ingresoEstimado;
+    }
+}
+
+// Variables globales
+const vuelos = [];
+const vuelosRentables = [];
+
+// Función para añadir un vuelo
+function anadirVuelo() {
+    const codigo = document.getElementById('codigo').value.trim();
+    const nplazas = parseInt(document.getElementById('nplazas').value);
+    const importe = parseFloat(document.getElementById('importe').value);
+
+    // Validaciones
+    if (!codigo || isNaN(nplazas) || isNaN(importe) || nplazas < 1 || importe < 0) {
+        alert('Por favor, completa todos los campos correctamente.');
+        return;
+    }
+
+    // Verificar si el vuelo ya existe
+    if (vuelos.some(v => v.codigo === codigo)) {
+        alert('El vuelo ya existe. Usa la opción Modificar para cambiar sus datos.');
+        return;
+    }
+
+    const nuevoVuelo = new Vuelo(codigo, nplazas, importe);
+    vuelos.push(nuevoVuelo);
+
+    // Verificar si es muy rentable
+    const ingresoEstimado = nuevoVuelo.calcularIngreso();
+    if (ingresoEstimado > 20000) {
+        const nuevoVueloRentable = new VueloMuyRentable(codigo, ingresoEstimado);
+        vuelosRentables.push(nuevoVueloRentable);
+    }
+
+    actualizarTabla();
+    actualizarTablaMuyRentables();
+    limpiarCampos();
+}
+
+// Función para modificar un vuelo
+function modificarVuelo() {
+    const codigo = document.getElementById('codigo').value.trim();
+    const nplazas = parseInt(document.getElementById('nplazas').value);
+    const importe = parseFloat(document.getElementById('importe').value);
+
+    // Validaciones
+    if (!codigo || isNaN(nplazas) || isNaN(importe) || nplazas < 1 || importe < 0) {
+        alert('Por favor, completa todos los campos correctamente.');
+        return;
+    }
+
+    const vuelo = vuelos.find(v => v.codigo === codigo);
+    if (!vuelo) {
+        alert('El vuelo no está registrado.');
+        return;
+    }
+
+    // Modificar los valores del vuelo
+    vuelo.nplazas = nplazas;
+    vuelo.importe = importe;
+
+    // Actualizar la tabla y la lista de vuelos rentables
+    const ingresoEstimado = vuelo.calcularIngreso();
+    const rentableIndex = vuelosRentables.findIndex(v => v.codigo === codigo);
+
+    if (ingresoEstimado > 20000) {
+        if (rentableIndex === -1) {
+            vuelosRentables.push(new VueloMuyRentable(codigo, ingresoEstimado));
+        } else {
+            vuelosRentables[rentableIndex].ingresoEstimado = ingresoEstimado;
+        }
+    } else if (rentableIndex !== -1) {
+        vuelosRentables.splice(rentableIndex, 1);
+    }
+
+    actualizarTabla();
+    actualizarTablaMuyRentables();
+    limpiarCampos();
+}
+
+// Función para calcular ingreso estimado
+function calcularVuelo() {
+    const codigo = document.getElementById('codigo').value.trim();
+
+    if (!codigo) {
+        alert('Por favor, ingresa el código del vuelo.');
+        return;
+    }
+
+    const vuelo = vuelos.find(v => v.codigo === codigo);
+    if (!vuelo) {
+        alert('El vuelo no está registrado.');
+        return;
+    }
+
+    const ingresoEstimado = vuelo.calcularIngreso();
+    let categoria = '';
+    if (ingresoEstimado < 10000) {
+        categoria = 'Poco rentable';
+    } else if (ingresoEstimado >= 10000 && ingresoEstimado <= 20000) {
+        categoria = 'Rentable';
+    } else {
+        categoria = 'Muy rentable';
+    }
+
+    alert(`El vuelo ${codigo} tiene un ingreso estimado de ${ingresoEstimado.toFixed(2)}€ y es ${categoria}.`);
+}
+
+// Función para actualizar la tabla de vuelos
+function actualizarTabla() {
+    const tabla = document.getElementById('vuelos').querySelector('tbody');
+    tabla.innerHTML = '';
+
+    vuelos.forEach(vuelo => {
+        const fila = `
+            <tr>
+                <td>${vuelo.codigo}</td>
+                <td>${vuelo.nplazas}</td>
+                <td>${vuelo.importe.toFixed(2)}</td>
+                <td>${vuelo.calcularIngreso().toFixed(2)}</td>
+            </tr>
+        `;
+        tabla.innerHTML += fila;
+    });
+}
+
+// Función para actualizar la lista de vuelos muy rentables
+function actualizarTablaMuyRentables() {
+    const lista = document.getElementById('VuelosRentables');
+    lista.innerHTML = '';
+
+    vuelosRentables.forEach(vuelo => {
+        const item = `<li>Código: ${vuelo.codigo}, Ingreso Estimado: ${vuelo.ingresoEstimado.toFixed(2)}€</li>`;
+        lista.innerHTML += item;
+    });
+}
+
+// Función para limpiar campos del formulario
+function limpiarCampos() {
+    document.getElementById('codigo').value = '';
+    document.getElementById('nplazas').value = '';
+    document.getElementById('importe').value = '';
+}
+</script>
+</body>
+</html>
