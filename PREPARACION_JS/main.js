@@ -2,9 +2,11 @@
 Clase Estudiante:
 Nombre
 Nota
+
 Clase Resultado:
 Nombre
 Estado (Aprobado o Suspendido)
+
 Requisitos:
 AÑADIR: El usuario podrá introducir el nombre y la nota de varios estudiantes.
 MODIFICAR: El usuario podrá modificar el nombre y/o la nota de un estudiante ya dado de alta.
