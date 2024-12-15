@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Carpintería</title>
+</head>
+<body>
+<h1>Gestión de Carpintería MaderAvilés</h1>
+
+<nav>
+    <button onclick="mostrarSeccion('pedidos')">Gestión de Pedidos</button>
+    <button onclick="mostrarSeccion('piezas')">Gestión de Piezas</button>
+</nav>
+
+<section id="pedidos" style="display: none;">
+    <h2>Gestión de Pedidos</h2>
+    <label for="numPedido">Número de Pedido</label>
+    <input type="number" id="numPedido" placeholder="1" min="1" required>
+
+    <label for="cliente">Cliente</label>
+    <input type="text" id="cliente" placeholder="Nombre y Apellidos" maxlength="50" required>
+
+    <label for="fechaPedido">Fecha del Pedido</label>
+    <input type="date" id="fechaPedido" required>
+
+    <button onclick="anadirPedido()">Añadir Pedido</button>
+    <button onclick="modificarPedido()">Modificar Pedido</button>
+    <button onclick="consultarPedidos()">Consultar Pedidos</button>
+
+    <h3>Pedidos Registrados</h3>
+    <table id="tablaPedidos">
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Cliente</th>
+                <th>Fecha</th>
+                <th>Procesado</th>
+                <th>Servido</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</section>
+
+<section id="piezas" style="display: none;">
+    <h2>Gestión de Piezas</h2>
+    <label for="numPieza">Número de Pieza</label>
+    <input type="number" id="numPieza" placeholder="1" min="1" required>
+
+    <label for="pedidoPieza">Número de Pedido</label>
+    <input type="number" id="pedidoPieza" placeholder="1" min="1" required>
+
+    <label for="largo">Largo (cm)</label>
+    <input type="number" id="largo" placeholder="50" min="1" required>
+
+    <label for="ancho">Ancho (cm)</label>
+    <input type="number" id="ancho" placeholder="20" min="1" required>
+
+    <label for="grosor">Grosor (cm)</label>
+    <input type="number" id="grosor" placeholder="2" min="1" required>
+
+    <label for="color">Color</label>
+    <input type="text" id="color" placeholder="Natural">
+
+    <label for="ambasCaras">Chapeado ambas caras</label>
+    <input type="checkbox" id="ambasCaras">
+
+    <button onclick="anadirPieza()">Añadir Pieza</button>
+    <button onclick="modificarPieza()">Modificar Pieza</button>
+    <button onclick="consultarPiezas()">Consultar Piezas</button>
+
+    <h3>Piezas Registradas</h3>
+    <table id="tablaPiezas">
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Pedido</th>
+                <th>Largo</th>
+                <th>Ancho</th>
+                <th>Grosor</th>
+                <th>Color</th>
+                <th>Chapeado</th>
+                <th>Cortada</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</section>
+
+<script src="js.js">
+    
+</script>
+
+</body>
+</html>
