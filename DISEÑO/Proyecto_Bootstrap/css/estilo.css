@@ -13,7 +13,24 @@ body {
   scroll-behavior: smooth;
 }
 
-/*Estilo del header */
+/* Eliminamos o comentamos lo siguiente para no sobrescribir la navbar de Bootstrap */
+/* nav {
+  margin-top: 10px;
+  background: #b69d7e; 
+  border-top: 3px solid #f1e1b3; 
+  border-bottom: 3px solid #f1e1b3; 
+} */
+
+/* En caso quieras forzar que no haya margen en el nav, puedes usar: 
+nav {
+  margin-top: 0 !important;
+  background: none !important;
+  border: none !important;
+}
+*/
+
+/*Estilo del header (no estás usando un <header> en el HTML, 
+  puedes eliminar esto si quieres) */
 header {
   background-color: #d8c9a3; 
   color: #333333;
@@ -28,40 +45,6 @@ header h1 {
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 2px;
-}
-
-/*Estilo del nav */
-nav {
-  margin-top: 10px;
-  background: #b69d7e; 
-  border-top: 3px solid #f1e1b3; 
-  border-bottom: 3px solid #f1e1b3; 
-}
-
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-}
-
-nav a {
-  text-decoration: none;
-  color: #333333;
-  font-weight: bold;
-  font-size: 19.2px; 
-  text-transform: uppercase;
-  padding: 16px 24px; 
-  border-radius: 5px;
-}
-
-nav a:hover {
-  background: #f1e1b3; 
-  color: #333333; 
-  transform: scale(1.1);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 /*Sección 1: Historia */
@@ -89,7 +72,6 @@ nav a:hover {
 }
 
 /*Sección 2: Tradiciones */
-
 .tradicion {
   display: flex;
   flex-direction: column;
@@ -102,10 +84,10 @@ nav a:hover {
 }
 
 .tradicion h2{
-    text-align: center;
-    font-size: 40px;
-    color: #333333;
-    text-transform: uppercase;
+  text-align: center;
+  font-size: 40px;
+  color: #333333;
+  text-transform: uppercase;
 }
 
 .tradicion ul {
@@ -116,7 +98,7 @@ nav a:hover {
   padding: 48px; 
   border-radius: 30px;
   box-shadow: 0 22px 22px rgba(0, 0, 0, 0.3);
-  width: 95%; /* Ajusta el ancho de la lista */
+  width: 95%;
   margin-right: 32px;
 }
 .ancho{
@@ -125,7 +107,6 @@ nav a:hover {
   align-items: center;
 }
 
-
 .tradicion ul li {
   margin-bottom: 16px; 
   font-size: 19.2px; 
@@ -133,14 +114,14 @@ nav a:hover {
 }
 .colocacion {
   display: flex;
-  justify-content: space-between; /* Estilo para pantallas grandes */
+  justify-content: space-between; 
   align-items: center;
   gap: 20px;
 }
 
 .colocacion img, 
 .colocacion video {
-  width: 48%; /* Tamaño principal para pantallas grandes */
+  width: 48%; 
   max-width: 1200px;
   height: auto;
 }
@@ -210,7 +191,7 @@ nav a:hover {
 }
 
 .gallery-img {
-  width: 400px; /*Pa cambiar el tamaño de la imagen*/
+  width: 400px; 
   height: auto;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -218,17 +199,17 @@ nav a:hover {
 
 /*Seccion 4: Video*/
 .video h2{
-    text-align: center;
-    font-size: 40px;
-    color: #333333;
-    text-transform: uppercase;
+  text-align: center;
+  font-size: 40px;
+  color: #333333;
+  text-transform: uppercase;
 }
 .video video{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 400px;
-    margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  margin: 0 auto;
 }
 
 /* Estilo para el footer */
@@ -239,19 +220,17 @@ footer {
   padding: 16px 0;
   margin-top: 48px;
   border-top: 2px solid #f1e1b3;
-  
 }
 footer{
   font-size: 40px;
-  
 }
+
 .foot {
   display: flex; 
   justify-content: space-between; 
   align-items: center; 
   gap: 20px; 
   flex-wrap: nowrap; 
-  
 }
 
 .imgfooter {
@@ -261,25 +240,18 @@ footer{
   object-fit: cover; 
 }
 
-
-
-
-
-
 /* Responsividad */
 @media (max-width: 992px) {
   nav ul {
-      flex-direction: column;
-      align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
   .tradicion ul{
     align-items: center;
     flex-direction: column;
     margin: 0 auto;
     margin-bottom: 40px;
-    
   }
-
   .tradicion img{
     width: 100%;
     max-width: 300px;
@@ -287,86 +259,70 @@ footer{
   .video video{
     height: 330px;
   }
-
   nav a {
     font-size: 25px;
   }
-  
   .historia p {
     font-size: 25px;
   }
-  
   .tradicion ul li {
     font-size: 25px;
     text-align: left;
   }
-  
   .gas article p {
     font-size: 25px;
   }
-  
   footer {
-font-size: 25px;
+    font-size: 25px;
   }
-  
 }
 
 @media (max-width: 576px) {
   .image-container {
-      flex-direction: column;
-      align-items: center;
-
+    flex-direction: column;
+    align-items: center;
   }
   .video video{
     height: 220px;
   }
-  
   .gallery-img {
-      width: 100%;
-      max-width: 300px;
-      
+    width: 100%;
+    max-width: 300px;
   }
-  
   .tradicion ul{
     align-items: center;
     flex-direction: column;
     margin: 0 auto;
     margin-bottom: 40px;
-    
   }
   .colocacion {
     flex-direction: column; 
     align-items: center; 
-}
-
-.colocacion img, 
-.colocacion video {
+  }
+  .colocacion img, 
+  .colocacion video {
     width: 100%; 
     max-width: 576px; 
     height: auto; 
-}
-nav a {
-  font-size: 19px;  }
-
-.historia p {
-  font-size: 19px;  }
-
-.tradicion ul li {
-  font-size: 19px;  }
-
-.gas article p {
-  font-size: 19px;
-}
-
-
+  }
+  nav a {
+    font-size: 19px;
+  }
+  .historia p {
+    font-size: 19px;
+  }
+  .tradicion ul li {
+    font-size: 19px;
+  }
+  .gas article p {
+    font-size: 19px;
+  }
   .foot {
-      flex-direction: column; 
-      gap: 10px; 
+    flex-direction: column; 
+    gap: 10px; 
   }
-
   .imgfooter {
-      width: 50px; 
-      height: 50px;
+    width: 50px; 
+    height: 50px;
   }
-
 }
