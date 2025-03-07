@@ -122,3 +122,23 @@ const pedidos = [];
             tabla.innerHTML += fila;
         });
     }
+    function nuevatabla(){
+        const nuevatabla = document.getElementById('nuevatabla').querySelector('tbody');
+        nuevatabla.innerHTML = '';
+
+        piezas.forEach(p => {
+            const fila = `
+                <tr>
+                    <td>${p.numPieza}</td>
+                    <td>${p.pedidoPieza}</td>
+                    <td>${p.largo}</td>
+                    <td>${p.ancho}</td>
+                    <td>${p.grosor}</td>
+                    <td>${p.color}</td>
+                    <td>${p.ambasCaras}</td>
+                    <td>${p.cortada}</td>
+                </tr>
+            `;
+            nuevatabla.innerHTML += fila;
+        });
+    }

@@ -13,11 +13,7 @@
     <link rel="stylesheet" href="css/estilo.css">
    
     <style>
-        /* Eliminar márgenes y padding por defecto del navegador */
-        html, body {
-            margin: 0;
-            padding: 0;
-        }
+   
         /* Media Queries para la galería */
         @media (max-width: 768px) {
             .row.g-3 .col-md-4 {
@@ -31,17 +27,15 @@
     <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-light bg-warning sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#">Oktoberfest</a>
+            <a class="navbar-brand" href="#historia">Oktoberfest</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#historia">Historia</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#tradiciones">Tradiciones</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#gastronomia">Gastronomía</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#galeria">Galería</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#video">Video</a></li>
+                    <li class="nav-item"><a class="nav-link" href="portfolio/galeria.html">Galería</a></li>
+                    <li class="nav-item"><a class="nav-link" href="portfolio/contacto.html">Contacto</a></li>
                 </ul>
             </div>
         </div>
@@ -84,59 +78,94 @@
         </div>
     </section>
 
-    <!-- Sección Gastronomía -->
-    <section id="gastronomia" class="container py-5">
-        <h2 class="text-center">Gastronomía</h2>
+    <section class="container py-5">
+        <h2 class="text-center">Platillos Destacados</h2>
         <p class="text-center">
-            El Oktoberfest no solo es famoso por su cerveza, sino también por su impresionante oferta gastronómica, 
-            que refleja la rica tradición culinaria de Baviera. Durante este evento, los asistentes pueden disfrutar 
-            de una variedad de platos típicos que hacen de la experiencia algo memorable.
+          Disfruta de nuestros platillos en 2 filas, con 2 tarjetas en cada una.
         </p>
-        <div class="text-center mt-4">
-            <img src="img/im6.jpg" class="img-fluid col-md-4" alt="Gastronomía del Oktoberfest">
+      
+        <!-- Fila de 4 tarjetas: 1 columna en XS, 2 columnas en SM+ -->
+        <div class="row row-cols-1 row-cols-sm-2 g-4 justify-content-center mt-4">
+          
+          <!-- Tarjeta 1 -->
+          <div class="col">
+            <div class="card h-100 shadow text-center">
+              <img src="img/im2.jpg" class="card-img-top" alt="Platillo 1">
+              <div class="card-body">
+                <h5 class="card-title">Platillo 1</h5>
+                <p class="card-text">
+                  Delicioso platillo típico, ideal para acompañar tu cerveza en el Oktoberfest.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Tarjeta 2 -->
+          <div class="col">
+            <div class="card h-100 shadow text-center">
+              <img src="img/im3.jpg" class="card-img-top" alt="Platillo 2">
+              <div class="card-body">
+                <h5 class="card-title">Platillo 2</h5>
+                <p class="card-text">
+                  Un clásico con ingredientes frescos y un sabor inigualable.
+                </p>
+              </div>
+            </div>
+          </div>
+      
+          <!-- Tarjeta 3 -->
+          <div class="col">
+            <div class="card h-100 shadow text-center">
+              <img src="img/im4.jpg" class="card-img-top" alt="Platillo 3">
+              <div class="card-body">
+                <h5 class="card-title">Platillo 3</h5>
+                <p class="card-text">
+                  Sabores auténticos que te transportan a la esencia del Oktoberfest.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Tarjeta 4 -->
+          <div class="col">
+            <div class="card h-100 shadow text-center">
+              <img src="img/im5.jpg" class="card-img-top" alt="Platillo 4">
+              <div class="card-body">
+                <h5 class="card-title">Platillo 4</h5>
+                <p class="card-text">
+                  Placer absoluto al lado de tu bebida favorita.
+                </p>
+              </div>
+            </div>
+          </div>
+      
         </div>
-    </section>
+      </section>
+      
+      
+      
+  
 
-    <!-- Sección Galería -->
-    <section id="galeria" class="container py-5 bg-light">
-        <h2 class="text-center">Galería</h2>
-        <div class="row g-3">
-            <div class="col-md-4 col-6">
-                <img src="img/im2.jpg" class="img-fluid rounded shadow" alt="Imagen 1">
-            </div>
-            <div class="col-md-4 col-6">
-                <img src="img/im3.jpg" class="img-fluid rounded shadow" alt="Imagen 2">
-            </div>
-            <div class="col-md-4 col-6">
-                <img src="img/im4.jpg" class="img-fluid rounded shadow" alt="Imagen 3">
-            </div>
-            <div class="col-md-4 col-6">
-                <img src="img/im5.jpg" class="img-fluid rounded shadow" alt="Imagen 4">
-            </div>
-            <div class="col-md-4 col-6">
-                <img src="img/im6.jpg" class="img-fluid rounded shadow" alt="Imagen 5">
-            </div>
-            <div class="col-md-4 col-6">
-                <img src="img/im2.jpg" class="img-fluid rounded shadow" alt="Imagen 6">
-            </div>
-        </div>
-    </section>
+  
 
     <!-- Pie de página -->
-    <footer class="bg-warning text-center py-3">
-        <p>&copy; 2024 Oktoberfest - Proyecto Diseño</p>
-        <div class="d-flex justify-content-center gap-3">
+    <footer class="bg-warning py-3">
+        <div class="foot">
+          <!-- Texto y iconos dentro del mismo contenedor -->
+          <p class="mb-0">&copy; 2024 Oktoberfest - Proyecto Diseño</p>
+          <div class="footer-icons">
             <a href="https://www.instagram.com" target="_blank" class="text-dark fs-3">
-                <i class="bi bi-instagram"></i>
+              <i class="bi bi-instagram"></i>
             </a>
             <a href="https://www.facebook.com" target="_blank" class="text-dark fs-3">
-                <i class="bi bi-facebook"></i>
+              <i class="bi bi-facebook"></i>
             </a>
             <a href="https://twitter.com" target="_blank" class="text-dark fs-3">
-                <i class="bi bi-twitter-x"></i>
+              <i class="bi bi-twitter-x"></i>
             </a>
+          </div>
         </div>
-    </footer>
+      </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
