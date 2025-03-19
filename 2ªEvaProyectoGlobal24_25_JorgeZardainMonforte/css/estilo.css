@@ -1,0 +1,338 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: white; 
+  background-attachment: fixed;
+  line-height: 1.6;
+  color: #333333; 
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilos del header (si lo usas) */
+header {
+  background-color: #d8c9a3; 
+  color: #333333;
+  text-align: center;
+  padding: 24px 0; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 40px; 
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Sección Historia */
+.historia {
+  background: url('../img/im2.jpg');
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px; 
+}
+
+.historia h2 {
+  font-size: 40px; 
+  margin-bottom: 16px; 
+  text-transform: uppercase;
+}
+
+.historia p {
+  font-size: 19.2px; 
+  text-align: left;
+  line-height: 1.6;
+  margin: 0 auto;
+}
+
+/* Sección Tradiciones */
+.tradicion {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
+  min-height: 100vh;
+  background-color: #d8c9a3;
+  padding: 32px; 
+}
+
+.tradicion h2 {
+  text-align: center;
+  font-size: 40px;
+  color: #333333;
+  text-transform: uppercase;
+}
+
+.tradicion ul {
+  background-color: #e5d1a1; 
+  color: #333333; 
+  list-style-type: disc;
+  text-align: center;
+  padding: 48px; 
+  border-radius: 30px;
+  box-shadow: 0 22px 22px rgba(0, 0, 0, 0.3);
+  width: 95%;
+  margin-right: 32px;
+}
+
+.ancho {
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+.tradicion ul li {
+  margin-bottom: 16px; 
+  font-size: 19.2px; 
+  color: #333333;
+}
+
+/* Colocación para imágenes y videos */
+.colocacion {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  gap: 20px;
+}
+
+.colocacion img, 
+.colocacion video {
+  width: 48%; 
+  max-width: 1200px;
+  height: auto;
+}
+
+/* Sección Gastronomía */
+.gas {
+  background: #d8c9a3;
+  padding: 32px; 
+}
+
+.gas h2 {
+  color: #333333;
+  margin-bottom: 32px; 
+  font-size: 40px; 
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.gas article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #e5d1a1; 
+  padding: 48px; 
+  border-radius: 30px;
+  box-shadow: 0 22px 22px rgba(0, 0, 0, 0.3);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.gas article img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 24px;
+  border-radius: 8px;
+}
+
+.gas article p {
+  font-size: 19.2px; 
+  color: #333333; 
+  line-height: 1.6;
+  text-align: justify;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Galería de imágenes */
+.Galeria {
+  background: #b69d7e;
+  color: #333333;
+  padding: 35px; 
+}
+
+.Galeria h2 {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 40px;
+}
+
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; 
+  justify-content: center;
+}
+
+.gallery-img {
+  width: 400px; 
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Sección Video */
+.video h2 {
+  text-align: center;
+  font-size: 40px;
+  color: #333333;
+  text-transform: uppercase;
+}
+
+.video video {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  margin: 0 auto;
+}
+
+/* Footer */
+footer {
+  text-align: center;        /* Opcional si quieres centrar horizontalmente */
+  font-size: 20px;           /* Ajusta el tamaño de fuente */
+  background-color: #d8c9a3;
+  border-top: 2px solid #f1e1b3;
+  margin-top: 48px;
+}
+
+.foot {
+  display: flex;
+  justify-content: center;   /* Centra el contenido horizontalmente */
+  align-items: center;       /* Alinea verticalmente en el centro */
+  gap: 20px;                 /* Espacio entre el texto y los iconos */
+}
+
+.footer-icons a {
+  color: #333333; 
+  transition: transform 0.3s;
+}
+
+.footer-icons a:hover {
+  transform: scale(1.1);
+}
+
+/* Evita margen extra en el párrafo */
+.foot p {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+
+/* Responsividad para pantallas medianas */
+@media (max-width: 992px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  .tradicion ul {
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-bottom: 40px;
+  }
+  .tradicion img {
+    width: 100%;
+    max-width: 300px;
+  }
+  .video video {
+    height: 330px;
+  }
+  nav a {
+    font-size: 25px;
+  }
+  .historia p {
+    font-size: 25px;
+  }
+  .tradicion ul li {
+    font-size: 25px;
+    text-align: left;
+  }
+  .gas article p {
+    font-size: 25px;
+  }
+  footer {
+    font-size: 25px;
+  }
+}
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 576px) {
+  .image-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .video video {
+    height: 220px;
+  }
+  .gallery-img {
+    width: 100%;
+    max-width: 300px;
+  }
+  .tradicion ul {
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-bottom: 40px;
+  }
+  .colocacion {
+    flex-direction: column; 
+    align-items: center; 
+  }
+  .colocacion img, 
+  .colocacion video {
+    width: 100%; 
+    max-width: 576px; 
+    height: auto; 
+  }
+  nav a {
+    font-size: 19px;
+  }
+  .historia p {
+    font-size: 19px;
+  }
+  .tradicion ul li {
+    font-size: 19px;
+  }
+  .gas article p {
+    font-size: 19px;
+  }
+  .foot {
+    flex-direction: column; 
+    gap: 10px; 
+  }
+  .imgfooter {
+    width: 50px; 
+    height: 50px;
+  }
+}
+
+/* Estilos específicos para el carrusel */
+.carousel-inner img {
+  max-height: 400px; 
+  object-fit: cover;
+}
+main {
+  flex: 1 0 auto; /* Crece para ocupar el espacio disponible */
+}
